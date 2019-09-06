@@ -2,7 +2,7 @@ package kr.co.mghan.view;
 
 import kr.co.mghan.domain.DeptBean;
 import kr.co.mghan.domain.DeptData;
-import kr.co.mghan.domain.EmpBean;
+
 
 public class DeptMenu extends CommonMethod
 {
@@ -118,12 +118,14 @@ public class DeptMenu extends CommonMethod
 
 		System.out.println("삭제하실 부서번호를 입력하세요.");
 		i_deptno = Integer.parseInt(input_msg());
-		int target = 0;
+		int target = 0; // 찾을 부서번호의 인덱스
 		for (target = 0; target < ar_db.length; target++)
 		{
+			// 부서가 존재하면 isDept의 값을 증가하고 for문 탈출
 			if (ar_db[target].getDeptno() == i_deptno)
 			{
-				isDept++;
+				ar_db[target] = null;
+				isDept++; 
 				break;
 			}
 		}
